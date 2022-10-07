@@ -1,25 +1,29 @@
 # Pattern Matching Extractors
 
 Frequently, one writes pattern matches upon objects like this:
-```
-event match {
-    case r@Rjected(Some(_), Some(partnerId), _, _) => doStuff(r, partnerId)
-    case _ =>
-  }
-```
-
-A more elegant solution involves the use of custom extractors, like so: 
-```
-import cats.syntax.all._
-
+```scala mdoc
+sealed trait Event
 case class Rejected(accountId: Option[String],
                     partnerAccountId: Option[String],
                     bankAccountId: Option[String],
                     displayId: String,
                     returnCode: String,
                     txId: Long,
-                    timestamp: String,
-                   )
+                    timestamp: String
+                   ) extends Event   
+case object NotRejected extends Event
+
+
+val event = NotRejected : Event
+event match {
+    case r@Rejected(Some(_), Some(partnerId), _, _, _, _, _) => ()
+    case _ => ()
+  }
+```
+
+A more elegant solution involves the use of custom extractors, like so: 
+```scala mdoc
+import cats.syntax.all._
 
 object RejectedPartner {
   def unapply(rej: Rejected): Option[String] =
