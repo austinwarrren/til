@@ -23,5 +23,5 @@ object AccountId extends RefinedTypeOps[AccountId, String]
 Once the companion object is declared, one may invoke any of the provided convenience methods by referencing the companion object like this:
 
 ```scala mdoc
-AccountId.from("") : Either[String, Refined[String, Uuid]]
+AccountId.from(uuid) : Either[String, Refined[String, Uuid]]
 ```
