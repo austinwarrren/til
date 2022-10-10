@@ -14,6 +14,9 @@ lazy val `code-examples` = (project in file("."))
     }
   )
 
-lazy val `docs` = (project in file("today-i-learned-docs"))
+lazy val `docs` = (project in file("tils"))
   .enablePlugins(MdocPlugin)
   .dependsOn(`code-examples`)
+  .settings(
+    mdocOut := file("tils")
+  )

@@ -1,7 +1,7 @@
 # Pattern Matching Extractors
 
 Frequently, one writes pattern matches upon objects like this:
-```scala mdoc
+```scala
 sealed trait Event
 case class Rejected(accountId: Option[String],
                     partnerAccountId: Option[String],
@@ -10,11 +10,12 @@ case class Rejected(accountId: Option[String],
                     returnCode: String,
                     txId: Long,
                     timestamp: String
-                   ) extends Event   
+                   ) extends Event      
 case object NotRejected extends Event
 
 
 val event = NotRejected : Event
+// event: Event = NotRejected
 event match {
     case r@Rejected(Some(_), Some(partnerId), _, _, _, _, _) => ()
     case _ => ()
@@ -22,7 +23,7 @@ event match {
 ```
 
 A more elegant solution involves the use of custom extractors, like so: 
-```scala mdoc
+```scala
 import cats.syntax.all._
 
 object RejectedPartner {

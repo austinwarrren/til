@@ -9,11 +9,12 @@ Fortunately, there exists a library which allows for determining at compile time
 is a properly-formatted string equivalent of a `java.time` instance. Enter [java-time-literals](https://github.com/bpholt/java-time-literals)!
 
 How might one use this library? Check out this example:
-```scala mdoc
+```scala
 import java.time.Instant
 import dev.holt.javatime.literals._
 
 val validInstant : Instant = instant"2022-10-07T21:45:49.227Z"
+// validInstant: Instant = 2022-10-07T21:45:49.227Z
 ```
 
 The string literal `instant` takes any literal string and determines whether or not a string is a valid `Instant`!
