@@ -10,6 +10,8 @@ class TestingLoggingSpec extends CatsEffectSuite {
 
   test("foo should log expected message"){
     implicit val writerTLogger: Logger[WriterT[IO, Chain[LogMessage], *]] = WriterTLogger[IO, Chain]()
-    TestingLogging[IO].foo("bar")
+    TestingLogging[WriterT[IO, Chain[LogMessage], *]].foo("bar").run.map{ case (logs, _) =>
+      assert(logs.size > 0)
+    }
   }
 }
