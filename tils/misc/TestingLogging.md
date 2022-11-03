@@ -15,14 +15,14 @@ import org.typelevel.log4cats.extras.{LogMessage, WriterTLogger}
 
 ```scala
 implicit val writerTLogger: Logger[WriterT[IO, Chain[LogMessage], *]] = WriterTLogger[IO, Chain]()
-// writerTLogger: Logger[[γ$0$]WriterT[IO, Chain[LogMessage], γ$0$]] = org.typelevel.log4cats.extras.WriterTLogger$$anon$1@6168ba07
+// writerTLogger: Logger[[γ$0$]WriterT[IO, Chain[LogMessage], γ$0$]] = org.typelevel.log4cats.extras.WriterTLogger$$anon$1@6a3d0175
 
 def log[F[_]: Applicative : Logger]: F[Unit] = Logger[F].info("Hello there")
 
 log[WriterT[IO, Chain[LogMessage], *]].run
 // res0: IO[(Chain[LogMessage], Unit)] = Map(
 //   ioe = Pure(value = ()),
-//   f = cats.data.WriterTFunctions$$Lambda$5333/799272442@8b1e93a,
+//   f = cats.data.WriterTFunctions$$Lambda$7157/0x00000008020fe040@309b788e,
 //   event = cats.effect.tracing.TracingEvent$StackTrace
 // )
 ```
