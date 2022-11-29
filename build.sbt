@@ -8,11 +8,11 @@ lazy val `code-examples` = (project in file("."))
     addCompilerPlugin("org.typelevel" % "kind-projector" % "0.13.2" cross CrossVersion.full),
     libraryDependencies ++= {
       Seq(
-        "org.typelevel" %% "cats-core" % "2.9.0",
+        "org.typelevel" %% "cats-core" % "2.8.0",
         "eu.timepit" %% "refined" % "0.10.1",
         "dev.holt" %% "java-time-literals" % "1.1.0",
         "org.typelevel" %% "log4cats-core" % "2.5.0",
-        "org.typelevel" %% "munit-cats-effect-3" % "1.0.7"
+        "org.typelevel" %% "munit-cats-effect-3" % "1.0.6"
       )
     }
   )
